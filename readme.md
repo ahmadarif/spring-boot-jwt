@@ -5,7 +5,7 @@
     - mvn spring-boot:run
 
 # How to test?
-## Login
+### Login
     POST URL: http://localhost:8080/auth/login
         
     Headers:
@@ -23,7 +23,7 @@
     Headers:
         Authorization: Bearer <YOUR_TOKEN>
         
-## Logout
+### Logout
     POST URL: http://localhost:8080/auth/logout
             
     Headers:
