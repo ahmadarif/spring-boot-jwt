@@ -6,7 +6,7 @@
 
 # How to test?
 ## Login
-    URL: http://localhost:8080/auth/login
+    POST URL: http://localhost:8080/auth/login
         
     Headers:
         Content-Type: application/x-www-form-urlencoded
@@ -18,7 +18,13 @@
     }
 
 ### Get User Information
-    URL: http://localhost:8080/user
+    GET URL: http://localhost:8080/user
         
+    Headers:
+        Authorization: Bearer <YOUR_TOKEN>
+        
+## Logout
+    POST URL: http://localhost:8080/auth/logout
+            
     Headers:
         Authorization: Bearer <YOUR_TOKEN>
