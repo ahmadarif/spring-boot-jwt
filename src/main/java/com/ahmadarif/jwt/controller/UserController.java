@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/user")
+    @GetMapping("/user")
     @PreAuthorize("isAuthenticated()")
     public User user() {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
