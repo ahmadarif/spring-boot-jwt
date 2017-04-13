@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 /**
  * Created by ARIF on 13-Apr-17.
  */
@@ -23,6 +21,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/user")
+    @PreAuthorize("isAuthenticated()")
+    public User user() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
     @GetMapping("/user/{userId}")
     public User loadById(@PathVariable Long userId) {
         return this.userService.findById(userId);
@@ -31,12 +35,6 @@ public class UserController {
     @GetMapping("/user/all")
     public List<User> loadAll() {
         return this.userService.findAll();
-    }
-
-    @RequestMapping("/whoami")
-    @PreAuthorize("hasRole('USER')")
-    public User user() {
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
 }
